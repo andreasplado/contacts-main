@@ -9,17 +9,17 @@ import {
 } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { User } from './user';
+import { Endpoints } from './constants/endpoints';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  endpoint: string = 'http://localhost:8080';
   currentUser = {};
 
   constructor(private http: HttpClient, public router: Router) {}
 
   signUp(user: User): Observable<any> {
-    let api = this.endpoint + '/users/signup';
+    let api = Endpoints.domain + '/users/signup';
 
     return this.http.post(api, user).pipe(catchError(this.handleError));
   }
@@ -35,7 +35,7 @@ export class AuthService {
     };
 
     return this.http
-      .post<any>(this.endpoint + '/user-login', user, httpOptions)
+      .post<any>(Endpoints.domain + '/user-login', user, httpOptions)
       .pipe(
         map((event) => {
           if (event.type == HttpEventType.Response) {
@@ -81,7 +81,7 @@ export class AuthService {
   }
 
   getUserProfile(id: any): Observable<any> {
-    let api = this.endpoint + '/users/' + id;
+    let api = Endpoints.domain + '/users/' + id;
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + this.getToken(),
