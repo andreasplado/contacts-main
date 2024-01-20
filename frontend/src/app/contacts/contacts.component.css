@@ -1,0 +1,144 @@
+.container {
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  width: 80%;
+  margin-top: 120px;
+  padding: 40px;
+}
+.contacts {
+  margin: 0 0 0 0;
+  list-style-type: none;
+  padding: 0;
+  width: 15em;
+  width: 100%;
+}
+.contacts li {
+  position: relative;
+  cursor: pointer;
+}
+
+.contacts li:hover {
+  left: .1em;
+}
+
+.contacts a {
+  color: #333;
+  text-decoration: none;
+  background-color: #242424aa;
+  margin: .5em;
+  padding: .3em 0;
+  border-radius: 4px;
+  display: block;
+  width: 100%;
+}
+
+.contacts a:hover {
+  color: #2c3a41;
+  background-color: #00000094;
+}
+
+.contacts a:active {
+  background-color: #525252;
+  color: #fafafa;
+}
+
+.contacts .badge {
+  display: inline-block;
+  font-size: small;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color: #405061;
+  line-height: 1em;
+  position: relative;
+  left: -1px;
+  top: 2px;
+  height: 1.9em;
+  min-width: 16px;
+  text-align: right;
+  margin-right: .8em;
+  border-radius: 4px 0 0 4px;
+}
+
+
+.pagination {
+  display: inline-block;
+  padding-left: 0;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.25rem;
+}
+.page-item {
+  display: inline;
+}
+.page-item:first-child .page-link {
+  margin-left: 0;
+  border-bottom-left-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
+}
+.page-item:last-child .page-link {
+  border-bottom-right-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+.page-item.active .page-link,
+.page-item.active .page-link:focus,
+.page-item.active .page-link:hover {
+  z-index: 2;
+  color: black !important;
+  cursor: default;
+  background-color: #405061;
+  border-color: #405061;
+}
+.page-item.disabled .page-link,
+.page-item.disabled .page-link:focus,
+.page-item.disabled .page-link:hover {
+  color: black !important;
+  pointer-events: none;
+  cursor: not-allowed;
+  background-color: #fff;
+  border-color: #ddd;
+}
+.page-link {
+  position: relative;
+  float: left;
+  padding: 0.5rem 0.75rem;
+  margin-left: -1px;
+  color: #405061;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+.page-link:focus,
+.page-link:hover {
+  color: #405061;
+  background-color: #eceeef;
+  border-color: #ddd;
+}
+
+.content{
+  color: #27f8ac !important;
+}
+
+h2{
+  color: white !important;
+}
+.container {
+  position: relative;
+  left: 50%;
+  width: 100%;
+  margin-top: 50px;
+  padding: 0px;
+}
+
+a{
+  text-decoration: none !important;
+  color:#aaf6da !important
+}
+
+a:hover{
+  text-shadow: 1px 1px #0073ff;
+}
+.link:hover{
+  text-shadow: none !important;
+}

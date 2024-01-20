@@ -1,0 +1,48 @@
+/* DashboardComponent's private CSS styles */
+
+h2 {
+  text-align: center;
+}
+
+a {
+  background-color: #00a6ff;
+  border-radius: 2px;
+  padding: 1rem;
+  font-size: 1.2rem;
+  text-decoration: none;
+  display: inline-block;
+  color: black;
+  text-align: center;
+  width: 100%;
+  min-width: 70px;
+  margin: .5rem auto;
+  box-sizing: border-box;
+
+  /* flexbox */
+  order: 0;
+  flex: 0 1 auto;
+  align-self: auto;
+}
+
+@media (min-width: 600px) {
+  a {
+    width: 18%;
+    box-sizing: content-box;
+  }
+}
+
+a:hover {
+  background-color: #006eff;
+}
+.content{
+  color: #27f8ac !important;
+}
+
+.container {
+  position: relative;
+  top: 60px;
+  left: 40%;
+  width: 80%;
+  margin-top: 120px;
+  padding: 40px;
+}

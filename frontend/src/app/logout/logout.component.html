@@ -1,0 +1,10 @@
+<li style="float: right">
+  <a *ngIf="isLoggedIn" href="#" (click)="logOut()"
+    ><i class="fa fa-sign-out" aria-hidden="true"></i
+  ></a>
+</li>
+<li style="float: right">
+  <a *ngIf="isLoggedIn" routerLink="/my-user"
+    ><i class="fa fa-user" aria-hidden="true"></i
+  ></a>
+</li>

@@ -1,0 +1,15 @@
+<div class="container">
+  <div>
+    <div>
+      <h3>Kontaktid</h3>
+      <p class="context-text" *ngIf="contacts.length === 0">
+        Kontakte ei leitud!<br />
+        <a class="link" routerLink="/add-contact">Lisage kontakt</a>
+      </p>
+      <a *ngFor="let contact of contacts" routerLink="/detail/{{ contact.id }}">
+        {{ contact.name }}
+      </a>
+    </div>
+  </div>
+</div>
+<app-user-details></app-user-details>

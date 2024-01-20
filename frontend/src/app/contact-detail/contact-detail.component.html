@@ -1,0 +1,75 @@
+<div class="container">
+  <div *ngIf="contact">
+    <h2>{{ contact.name | uppercase }} Detailid</h2>
+    <div><span>id: </span>{{ contact.id }}</div>
+    <div>
+      <form [formGroup]="updateContactForm" (ngSubmit)="updateContact()">
+        <div class="user-box">
+          <input
+            type="text"
+            [(ngModel)]="contact.name"
+            name="name"
+            formControlName="name"
+            placeholder="Pärisinimi"
+          />
+          <label for="contact-name">Kontakti pärisnimi</label>
+        </div>
+        <br />
+        <div class="user-secret-box">
+          <input
+            [type]="password"
+            id="contact-code"
+            [(ngModel)]="contact.code"
+            name="code"
+            formControlName="code"
+            placeholder="Salajane kood"
+          />
+          <label>Salajane kood</label>
+          <button type="button" (click)="showSecret()">
+            <i class="fa fa-eye" aria-hidden="true" *ngIf="showingSecret"></i>
+            <i
+              class="fa fa-eye-slash"
+              aria-hidden="true"
+              *ngIf="!showingSecret"
+            ></i>
+          </button>
+        </div>
+        <div class="user-box">
+          <input
+            type="text"
+            [(ngModel)]="contact.phone"
+            name="phone"
+            formControlName="phone"
+            placeholder="Kontakti telefon"
+          />
+          <label for="contact-phone">Kontakti telefon: </label>
+        </div>
+        <div style="display: flex;">
+          <a class="button-text">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <input type="button" value="MINE TAGASI" (click)="goBack()" />
+          </a>
+          &nbsp;&nbsp;&nbsp;
+          <a class="button-text">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <input type="button" value="KUSTUTA" (click)="deleteContact()" />
+          </a>
+          &nbsp;&nbsp;&nbsp;
+          <a class="button-text" style="float: right">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <input type="submit" value="MUUDA" />
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

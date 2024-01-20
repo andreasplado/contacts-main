@@ -1,0 +1,55 @@
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<form [formGroup]="searchContactForm" (ngSubmit)="findContact()">
+  <div style="display: flex">
+    <div class="container">
+      <div class="user-box">
+        <input
+          type="text"
+          name="name"
+          formControlName="name"
+          width="40%"
+          (keyup)="findContact()"
+        />
+        <label>Otsi kontakti</label>
+      </div>
+    </div>
+  </div>
+  <br />
+</form>
+<div style="padding-left: 10%; padding-right: 10%;">
+  <h2>Minu kontaktid</h2>
+  <div *ngIf="contacts.length > 0">
+    <ul class="contacts">
+      <li *ngFor="let contact of contacts">
+        <a routerLink="/detail/{{ contact.id }}">
+          <span class="badge">{{ contact.id }}</span>
+          {{ contact.name }} &nbsp;&nbsp;&nbsp;&nbsp; {{ contact.phone }}
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="contacts.length <= 0">
+    <p class="content">
+      Kontakte {{ keyword }} ei leitud!<br /><br /><br />
+      <small
+        >Kui te tahate luua kontakti palun <br /><a routerLink="/add-contact"
+          >lisage kontakt</a
+        ></small
+      >
+    </p>
+  </div>
+  <ul *ngIf="showPagination" class="pagination">
+    <li
+      *ngFor="let page of pages"
+      [ngClass]="{ 'page-item': true, active: currentPage === page }"
+      (click)="onPageChange(page)"
+    >
+      <span class="page-link">{{ page }}</span>
+    </li>
+  </ul>
+</div>

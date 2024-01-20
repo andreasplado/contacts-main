@@ -1,0 +1,29 @@
+
+label {
+  color: #435960;
+  font-weight: bold;
+}
+input {
+  font-size: 1em;
+  padding: .5rem;
+}
+
+
+.container {
+  position: absolute;
+  left: 50%;
+  top: 150px;
+  width: 80%;
+  padding: 40px;
+  margin-top: 300px;
+}
+
+input[type="button"] {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  color: white;
+}
