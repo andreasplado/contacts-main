@@ -31,6 +31,7 @@ export class AddContactComponent {
     userid: this.authService.getLoggedInUserId(),
     code: '',
     phone: '',
+    video: '',
   });
 
   ngOnInit() {
@@ -45,18 +46,20 @@ export class AddContactComponent {
   }
 
   onSubmit(): void {
-    let name = <HTMLInputElement>document.getElementById('name');
-    let code = <HTMLInputElement>document.getElementById('code');
-    let phone = <HTMLInputElement>document.getElementById('phone');
+    let video = <HTMLInputElement>document.getElementById('video');
+    let title = <HTMLInputElement>document.getElementById('title');
+    let description = <HTMLInputElement>document.getElementById('description');
+    let tags = <HTMLInputElement>document.getElementById('tags');
 
     if (
-      name.value.length > 0 &&
-      code.value.length > 0 &&
-      phone.value.length > 0 &&
+      title.value.length > 0 &&
+      description.value.length > 0 &&
+      tags.value.length > 0 &&
+
       this.addContactForm.valid
     ) {
       var contact = this.addContactForm.value;
-      this.contactService.addContact(contact).subscribe((contact) => {
+      this.contactService.addVideo(contact).subscribe((video) => {
         this.addContactForm.reset();
         this.router.navigateByUrl('/contacts');
       });
@@ -64,6 +67,15 @@ export class AddContactComponent {
       this.formIsValid = false;
     }
   }
+
+  onFileSelect(event: any) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.addContactForm.value.video = file;
+    }
+  }
+
+
   ngOnChanges() {
     var contact = this.addContactForm.value;
     if (contact.code != null && contact.name != null && contact.phone != null) {

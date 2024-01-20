@@ -30,6 +30,7 @@ ul {
   left: 0;
   right: 0;
   z-index: 99999!important;
+  box-shadow: 0px 1px 1px 1px #000000;
 }
 
 li {
@@ -40,7 +41,7 @@ li a {
   display: block;
   color: white;
   text-align: center;
-  padding: 14px 16px;
+  padding: 36px 16px;
   text-decoration: none;
 }
 
@@ -62,4 +63,18 @@ h2{
 }
 .logo{
   color: white !important;
+  padding: 25px;
+}
+
+/** SEARCH **/
+input.search {
+  width: 260px;
+  border: 1px solid #555;
+  display: block;
+  padding: 9px 4px 9px 40px;
+  background: transparent url("/assets/search.svg") no-repeat 13px;
+  margin-top: 25px;
+  margin-left: 10px;
+  color: white !important;
+  right: 0;
 }

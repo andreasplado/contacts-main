@@ -93,7 +93,7 @@ export class ContactService {
     return this.http.get<Contact[]>(url, { headers: headers });
   }
 
-  addContact(contact: any): Observable<Contact> {
+  addVideo(contact: any): Observable<Contact> {
     let url: string = Endpoints.domain + '/contact/';
 
     let headers = new HttpHeaders({

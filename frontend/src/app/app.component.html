@@ -1,21 +1,16 @@
-<i
-  class="fa fa-phone-square logo"
-  aria-hidden="true"
-></i>
 <div id="menu">
   <ul>
     <li>
       <h1>
-        <i
-          class="fa fa-address-book logo"
-          aria-hidden="true"
-          style="padding: 3px"
-        ></i>
+        <i class="fa fa-video-camera logo" aria-hidden="true"></i>
       </h1>
     </li>
-    <li><a routerLink="/dashboard">Töölaud</a></li>
-    <li><a routerLink="/contacts">Kontaktid</a></li>
-    <li><a routerLink="/add-contact">Lisa kontakt</a></li>
+    <li><a routerLink="/dashboard">Newest</a></li>
+    <li><a routerLink="/contacts">My videos</a></li>
+    <li><a routerLink="/add-contact">Upload</a></li>
+    <li>
+      <input class="search" type="search" placeholder="Find videos">
+    </li>
     <li style="float: right">
       <a *ngIf="isLoggedIn" href="#" (click)="logOut()"
         ><i class="fa fa-sign-out" aria-hidden="true"></i

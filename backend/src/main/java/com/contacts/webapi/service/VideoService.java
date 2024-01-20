@@ -1,7 +1,7 @@
 package com.contacts.webapi.service;
 
-import com.contacts.webapi.dao.entity.ContactEntity;
-import com.contacts.webapi.respository.ContactRepository;
+import com.contacts.webapi.dao.entity.VideoEntity;
+import com.contacts.webapi.respository.VideoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -17,13 +17,13 @@ import java.util.Optional;
 public class ContactService implements IContactService {
 
     @Autowired
-    private ContactRepository repository;
+    private VideoRepository repository;
 
     @Override
-    public List<ContactEntity> getAllContacts(Integer pageNo, Integer pageSize, String sortBy)
+    public List<VideoEntity> getAllContacts(Integer pageNo, Integer pageSize, String sortBy)
     {
         Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
-        Page<ContactEntity> pagedResult = repository.findAll(paging);
+        Page<VideoEntity> pagedResult = repository.findAll(paging);
 
         if(pagedResult.hasContent()) {
             return pagedResult.getContent();
@@ -33,35 +33,35 @@ public class ContactService implements IContactService {
     }
 
     @Override
-    public ContactEntity save(ContactEntity contactEntity) {
-        return repository.save(contactEntity);
+    public VideoEntity save(VideoEntity videoEntity) {
+        return repository.save(videoEntity);
     }
     @Override
-    public Optional<ContactEntity> findById(Integer id) {
+    public Optional<VideoEntity> findById(Integer id) {
         return repository.findById(id);
     }
 
     @Override
-    public List<ContactEntity> findAll() {
+    public List<VideoEntity> findAll() {
         return repository.findAll();
     }
 
     @Override
-    public List<ContactEntity> findByUserId(Integer userId) {
+    public List<VideoEntity> findByUserId(Integer userId) {
         return repository.findByUserId(userId);
     }
 
     @Override
-    public ContactEntity update(Integer id,ContactEntity contactEntity) {
-        System.out.println(contactEntity.getName());
+    public VideoEntity update(Integer id, VideoEntity videoEntity) {
+        System.out.println(videoEntity.getTitle());
         if(repository.existsById(id)){
-            repository.save(contactEntity);
+            repository.save(videoEntity);
         }
-        return contactEntity;
+        return videoEntity;
     }
 
     @Override
-    public List<ContactEntity> findByValues(String name, Integer userId) {
+    public List<VideoEntity> findByValues(String name, Integer userId) {
         return repository.findByValues(name, userId);
     }
 

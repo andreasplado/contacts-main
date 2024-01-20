@@ -1,10 +1,10 @@
 <div class="container">
   <div>
     <div>
-      <h3>Kontaktid</h3>
+      <h3>Videos</h3>
       <p class="context-text" *ngIf="contacts.length === 0">
-        Kontakte ei leitud!<br />
-        <a class="link" routerLink="/add-contact">Lisage kontakt</a>
+        Videos not found!<br />
+        <a class="link" routerLink="/add-contact">Add video</a>
       </p>
       <a *ngFor="let contact of contacts" routerLink="/detail/{{ contact.id }}">
         {{ contact.name }}

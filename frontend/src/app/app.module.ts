@@ -32,7 +32,7 @@ import { UserDetailsComponent } from './user-details/user-details.component';
     LoginComponent,
     LogoutComponent,
     RegisterComponent,
-    UserDetailsComponent,
+    UserDetailsComponent
   ],
 
   bootstrap: [AppComponent],
