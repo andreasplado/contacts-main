@@ -48,9 +48,9 @@ public class VideoController {
     @GetMapping
     @RequestMapping(value = "/all/user/{user_id}", method = RequestMethod.GET)
     public ResponseEntity<?> getAll(@PathVariable("user_id") Integer userId) {
-        List<VideoEntity> contacts = videoService.findByUserId(userId);
+        List<VideoEntity> videos = videoService.findByUserId(userId);
 
-        return new ResponseEntity<>(contacts, HttpStatus.OK);
+        return new ResponseEntity<>(videos, HttpStatus.OK);
     }
 
     @GetMapping
