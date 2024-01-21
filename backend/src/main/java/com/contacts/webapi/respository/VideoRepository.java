@@ -8,10 +8,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ContactRepository extends JpaRepository<VideoEntity, Integer> {
-    @Query(value="SELECT c.* FROM contacts c WHERE (c.name LIKE %?1% OR c.phone LIKE %?1%) AND c.userid=?2", nativeQuery = true)
+public interface VideoRepository extends JpaRepository<VideoEntity, Integer> {
+    @Query(value="SELECT v.* FROM video v WHERE (v.title LIKE %?1% OR v.description LIKE %?1%) AND c.userid=?2", nativeQuery = true)
     List<VideoEntity> findByValues(String name, Integer userId);
 
-    @Query(value="SELECT c.* FROM contacts c WHERE c.userid=?1", nativeQuery = true)
+    @Query(value="SELECT v.* FROM video v WHERE v.userid=?1", nativeQuery = true)
     List<VideoEntity> findByUserId(Integer name);
 }

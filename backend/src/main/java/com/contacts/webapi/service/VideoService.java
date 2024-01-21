@@ -8,13 +8,16 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ContactService implements IContactService {
+public class VideoService implements IVideoService {
 
     @Autowired
     private VideoRepository repository;
@@ -33,8 +36,23 @@ public class ContactService implements IContactService {
     }
 
     @Override
-    public VideoEntity save(VideoEntity videoEntity) {
-        return repository.save(videoEntity);
+    public VideoEntity save(VideoEntity videoEntity, MultipartFile file) throws Exception {
+        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+        try {
+
+            if(fileName.contains("..")) {
+                throw  new Exception("Filename contains invalid path sequence " + fileName);
+            }
+            if (file.getBytes().length > (1024 * 1024)) {
+                throw new Exception("File size exceeds maximum limit");
+            }
+            VideoEntity video = new VideoEntity(file.getBytes(), videoEntity.getTitle(), videoEntity.getDescription(), videoEntity.getTags());
+            return repository.save(video);
+        } catch (MaxUploadSizeExceededException e) {
+            throw new MaxUploadSizeExceededException(file.getSize());
+        } catch (Exception e) {
+            throw new Exception("Could not save File: " + fileName);
+        }
     }
     @Override
     public Optional<VideoEntity> findById(Integer id) {

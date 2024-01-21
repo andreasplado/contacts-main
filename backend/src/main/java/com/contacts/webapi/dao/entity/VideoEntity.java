@@ -4,8 +4,8 @@ import java.util.Date;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "contacts")
-public class ContactEntity {
+@Table(name = "video")
+public class VideoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,14 +22,17 @@ public class ContactEntity {
     @Column(name = "userid")
     private Integer userid;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "video")
+    private String video;
 
-    @Column(name = "code")
-    private String code;
+    @Column(name = "title")
+    private String title;
 
-    @Column(name = "phone")
-    private String phone;
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "tags")
+    private String tags;
 
     @Column(name = "createdAt")
     private Date createdAt;
@@ -37,11 +40,11 @@ public class ContactEntity {
     @Column(name = "updatedAt", nullable = false)
     private Date updatedAt;
 
-    public ContactEntity() {
+    public VideoEntity() {
 
     }
 
-    public ContactEntity(String realName, String secretCode, String phone) {
+    public VideoEntity(byte[]video, String title, String description, String tags) {
         this.setCreatedAt(new Date());
     }
 
@@ -85,28 +88,28 @@ public class ContactEntity {
         this.updatedAt = new Date();
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getCode() {
-        return code;
+    public String getDescription() {
+        return description;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getTags() {
+        return tags;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setTags(String tags) {
+        this.tags = tags;
     }
 
     public Integer getUserid() {
@@ -115,6 +118,14 @@ public class ContactEntity {
 
     public void setUserid(Integer userId) {
         this.userid = userId;
+    }
+
+    public byte[] getVideo() {
+        return video;
+    }
+
+    public void setVideo(byte[] video) {
+        this.video = video;
     }
 }
 

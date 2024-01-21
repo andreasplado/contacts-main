@@ -23,7 +23,6 @@ public class AuthenticationService {
         UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(user,
                 user.getPassword(), user.getAuthorities());
 
-        //Use following to indicate that authentication failed, if user not found or role doesn't match
         boolean hasAuthenticationFailed = false;
 
         if(hasAuthenticationFailed) {

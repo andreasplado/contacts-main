@@ -5,5 +5,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ContactPagingRepository extends PagingAndSortingRepository<VideoEntity, Long> {
+public interface VideoPagingRepository extends PagingAndSortingRepository<VideoEntity, Long> {
 }

@@ -2,24 +2,25 @@ package com.contacts.webapi.controller;
 
 import com.contacts.webapi.dao.entity.VideoEntity;
 import com.contacts.webapi.model.ResponseModel;
-import com.contacts.webapi.service.ContactService;
+import com.contacts.webapi.service.VideoService;
 import com.contacts.webapi.service.FilesStorageServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.*;
 
 @RestController
 @RequestMapping("/contact")
-public class ContactController {
+public class VideoController {
 
     private static String KEY_CONTACTS = "contacts";
 
     @Autowired
-    private ContactService contactService;
+    private VideoService videoService;
 
     @Autowired
     FilesStorageServiceImpl storageService;
@@ -31,7 +32,7 @@ public class ContactController {
             @RequestParam(defaultValue = "10") Integer pageSize,
             @RequestParam(defaultValue = "id") String sortBy)
     {
-        List<VideoEntity> contacts = contactService.getAllContacts(pageNo, pageSize, sortBy);
+        List<VideoEntity> contacts = videoService.getAllContacts(pageNo, pageSize, sortBy);
 
         return new ResponseEntity<>(contacts, new HttpHeaders(), HttpStatus.OK);
     }
@@ -39,7 +40,7 @@ public class ContactController {
     @GetMapping
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public ResponseEntity<?> getAll() {
-        List<VideoEntity> contacts = contactService.findAll();
+        List<VideoEntity> contacts = videoService.findAll();
 
         return new ResponseEntity<>(contacts, HttpStatus.OK);
     }
@@ -47,7 +48,7 @@ public class ContactController {
     @GetMapping
     @RequestMapping(value = "/all/user/{user_id}", method = RequestMethod.GET)
     public ResponseEntity<?> getAll(@PathVariable("user_id") Integer userId) {
-        List<VideoEntity> contacts = contactService.findByUserId(userId);
+        List<VideoEntity> contacts = videoService.findByUserId(userId);
 
         return new ResponseEntity<>(contacts, HttpStatus.OK);
     }
@@ -55,7 +56,7 @@ public class ContactController {
     @GetMapping
     @RequestMapping(value = "/get/{user_id}", method = RequestMethod.GET)
     public ResponseEntity<?> getByPublicValues(@RequestParam(defaultValue = "name") String name, @PathVariable("user_id") Integer userId) {
-        List<VideoEntity> contacts = contactService.findByValues(name, userId);
+        List<VideoEntity> contacts = videoService.findByValues(name, userId);
 
         return new ResponseEntity<>(contacts, HttpStatus.OK);
     }
@@ -63,19 +64,19 @@ public class ContactController {
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
     public ResponseEntity<?> get(@PathVariable("id") Integer id) {
 
-        Optional<VideoEntity> contact = contactService.findById(id);
+        Optional<VideoEntity> contact = videoService.findById(id);
         return ResponseEntity.ok(contact);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<?> create(@RequestBody VideoEntity videoEntity) {
-        contactService.save(videoEntity);
+    public ResponseEntity<?> create(@RequestBody VideoEntity videoEntity, @RequestParam("file") MultipartFile file) throws Exception{
+        videoService.save(videoEntity, file);
         return ResponseEntity.ok(videoEntity);
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.PUT)
     public ResponseEntity<?> updateContact(@PathVariable("id") Integer id, @RequestBody VideoEntity videoEntity) {
-        contactService.update(id, videoEntity);
+        videoService.update(id, videoEntity);
         System.out.println(videoEntity.getId());
         return ResponseEntity.ok(videoEntity);
     }
@@ -83,8 +84,8 @@ public class ContactController {
     @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> delete(@PathVariable("id") Integer id) {
 
-            Optional<VideoEntity> contactEntity = contactService.findById(id);
-            contactService.delete(id);
+            Optional<VideoEntity> contactEntity = videoService.findById(id);
+            videoService.delete(id);
 
             return ResponseEntity.ok(contactEntity);
     }
@@ -92,7 +93,7 @@ public class ContactController {
 
     @RequestMapping(value = "deleteall", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteaLL() {
-        contactService.deleteAll();
+        videoService.deleteAll();
         ResponseModel responseModel = new ResponseModel();
         responseModel.setMessage("Sa oled kõik kontaktid edukalt kustutanud!");
 
