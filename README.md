@@ -1,10 +1,10 @@
 # Kontaktid
 
-Kontaktide proovitöö.
+Kontaktid.
 
 ## Kirjeldus
 
-Lihtne proovitöö Angularis ja Spring Boots.
+Lihtne kontaktiraamat Angularis ja Spring Bootis.
 
 ## Kuidas käima panna
 
@@ -20,5 +20,5 @@ ng serve
 mvn spring-boot:run
 ```
 
-Anmed on h2 andmebaasis ja igal uuel käivitamisel kustuvad andmed
+Andmed on h2 andmebaasis ja igal uuel käivitamisel kustuvad andmed
 
